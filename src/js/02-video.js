@@ -20,19 +20,8 @@ function onPlay(data) {
 function setTime() {
   const savedTime = localStorage.getItem('videoplayer-current-time');
   if (savedTime) {
-    player
-      .setCurrentTime(savedTime)
-      .then(function (seconds) {})
-      .catch(function (error) {
-        switch (error.name) {
-          case 'RangeError':
-            // the time was less than 0 or greater than the video’s duration
-            break;
-
-          default:
-            // some other error occurred
-            break;
-        }
-      });
+    player.setCurrentTime(savedTime);
+  } else {
+    player.setCurrentTime(0);
   }
 }

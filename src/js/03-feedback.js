@@ -33,8 +33,15 @@ function dataFill() {
 
 function onSubmit(event) {
   event.preventDefault();
-  const savedData = JSON.parse(localStorage.getItem('feedback-form-state'));
-  console.log(savedData);
-  localStorage.removeItem('feedback-form-state');
-  form.reset();
+  const { email, message } = event.currentTarget.elements;
+  if (email.value === '' || message.value === '') {
+    alert('All fields must be filled!');
+  } else {
+    const savedData = JSON.parse(localStorage.getItem('feedback-form-state'));
+    console.log(savedData);
+    localStorage.removeItem('feedback-form-state');
+    event.currentTarget.reset();
+  }
 }
+
+
